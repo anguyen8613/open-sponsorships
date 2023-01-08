@@ -5,7 +5,6 @@ import { MultiSelect } from "react-multi-select-component";
 import { useFormData } from "../../context";
 import * as yup from "yup";
 import Input from '../Inputs/Input';
-import Dropdown from '../Inputs/Dropdown';
 const schema = yup.object().shape({
   team: yup
     .string()
@@ -32,7 +31,7 @@ const SportsInfo = ({ formStep, nextFormStep }) => {
   ]
 
 
-  async function handleSubmit(data) {
+   const handleSubmit = async(data) => {
     try {
       formRef.current.setErrors({});
 
@@ -72,6 +71,7 @@ const SportsInfo = ({ formStep, nextFormStep }) => {
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className={styles.formRow}>
           <Input name="team" label="Team" type="Team" />
+          <label>Sports</label>
           <MultiSelect
             options={sportsOptions}
             value={selectedSports}
@@ -79,6 +79,7 @@ const SportsInfo = ({ formStep, nextFormStep }) => {
             hasSelectAll={false}
             ClearSelectedIcon={null}
           />
+          <label>Interests</label>
           <MultiSelect
             options={interestOptions}
             value={selectedInterests}

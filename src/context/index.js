@@ -2,7 +2,7 @@ import { useState, createContext, useContext } from "react";
 
 export const FormContext = createContext();
 
-export default function FormProvider({ children }) {
+const FormProvider = ({ children }) => {
   const [data, setData] = useState({});
 
   const setFormValues = (values) => {
@@ -20,3 +20,4 @@ export default function FormProvider({ children }) {
 }
 
 export const useFormData = () => useContext(FormContext);
+export default FormProvider;

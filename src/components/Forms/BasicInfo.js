@@ -4,6 +4,7 @@ import { Form } from "@unform/web";
 import { useFormData } from "../../context";
 import * as yup from "yup";
 import Input from '../Inputs/Input';
+import ImageInput from '../Inputs/ImageInput';
 
 const schema = yup.object().shape({
     name: yup
@@ -22,9 +23,11 @@ const schema = yup.object().shape({
 
 export const BasicInfo = ({ formStep, nextFormStep }) => {
   const { setFormValues } = useFormData();
+  
   const formRef = useRef();
 
-  async function handleSubmit(data) {
+  const handleSubmit = async(data) => {
+    console.log(data)
     try {
       formRef.current.setErrors({});
 
@@ -48,6 +51,7 @@ export const BasicInfo = ({ formStep, nextFormStep }) => {
     }
   }
 
+
   return (
     <div className={formStep === 0 ? styles.showForm : styles.hideForm}>
       <h2>Basic Info</h2>
@@ -57,6 +61,7 @@ export const BasicInfo = ({ formStep, nextFormStep }) => {
           <Input name="name" label="Name" type="Name" />
           <Input name="location" label="Location" type="Location" />
           <Input name="gender" label="Gender" type="Gender" />
+          <ImageInput/>
         </div>
         
         <button type="submit">Next</button>

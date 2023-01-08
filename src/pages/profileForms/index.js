@@ -21,7 +21,7 @@ const ProfileForms = () => {
       <Head>
         <title>Open Sponsorships Profile</title>
       </Head>
-      <h1>Unform Multi Step Form</h1>
+      {formStep < 2 ? <h1>Create Your Profile</h1> : <h1>Review Your Profile</h1> }
 
       <FormCard currentStep={formStep} prevFormStep={prevFormStep}>
         {formStep >= 0 && (

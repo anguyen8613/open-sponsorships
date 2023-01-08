@@ -2,14 +2,14 @@ import { uuid } from 'uuidv4';
 import dbConnect from '../../../lib/dbConnect';
 import Profile from '../../../lib/models/Profile';
 
-export async function getProfiles(){
+export const getProfiles = async() =>{
         await dbConnect();
         const profiles =  await Profile.find({}).lean()
         return profiles;
 }
 
 
-export async function createProfile(body){
+export const createProfile = async(body) => {
   await dbConnect();
     const id= uuid();
     console.log(id);
@@ -17,7 +17,7 @@ export async function createProfile(body){
     return profile;
 }
 
-export default async function handler (req, res) {
+const handler =  async(req, res) => {
   const { method } = req;
 
   switch (method) {
@@ -42,3 +42,5 @@ export default async function handler (req, res) {
       break;
   }
 }
+
+export default handler;

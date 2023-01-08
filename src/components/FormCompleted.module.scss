@@ -1,0 +1,44 @@
+.profileName {
+  font-style: italic;
+  font-size: x-large;
+  color: white;
+  margin-left: 175px;
+}
+
+.profileInfo {
+  font-weight: 450;
+  margin: 1rem;
+  color: white;
+}
+
+.profileBox {
+  border-color: #1d3557;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  margin-top: 35px;
+  border-radius: 15px;
+  background-color: #509fba;
+}
+
+.profilePage {
+  background-color: black;
+}
+
+.bodyContainer{
+  display: flex;
+}
+
+.imgContainer{
+  margin: 2rem;
+}
+
+.profileContainer{
+  border-color: #1d3557;
+  width: auto;
+  height: 100%;
+  margin: auto;
+  margin-top: 35px;
+  border-radius: 15px;
+  background-color: #509fba;
+}

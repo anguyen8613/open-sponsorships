@@ -49,7 +49,7 @@ const AdditionalInfo = ({ formStep, nextFormStep }) => {
 
   return (
     <div className={formStep === 1 ? styles.showForm : styles.hideForm}>
-      <h2>Billing Info</h2>
+      <h2>Personal Traits</h2>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className={styles.formRow}>

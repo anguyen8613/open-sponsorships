@@ -16,11 +16,7 @@ const ProfileSchema = new mongoose.Schema({
   interests: [{
     type: String
   }],
-  // img:
-  // {
-  //     data: Buffer,
-  //     contentType: String
-  // }
+  imgUrl: String
 })
 
 

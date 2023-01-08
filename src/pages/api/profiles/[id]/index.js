@@ -1,13 +1,13 @@
 import dbConnect from '../../../../lib/dbConnect';
 import Profile from '../../../../lib/models/Profile';
 
-export async function getProfile(id){
+export const getProfile = async(id) =>{
         await dbConnect();
         const profile =  await Profile.findOne({id}).lean();
         return profile;
 }
 
-export default async function handler (req, res) {
+const handler =  async(req, res) => {
     const {query} = req;
     const {id} = query;
     try {
@@ -17,3 +17,5 @@ export default async function handler (req, res) {
         res.status(400).json({ success: false });
       }
 }
+
+export default handler;

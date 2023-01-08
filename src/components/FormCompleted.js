@@ -1,12 +1,14 @@
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useFormData } from "../context";
+import styles from './FormCompleted.module.scss';
 
 const FormCompleted = () => {
   const { data } = useFormData();
   const router = useRouter();
 
-  console.log(data)
-  const {name, age, gender, location, height, weight, sports, team, interests} = data;
+  console.log("data",data)
+  const {name, age, gender, location, height, weight, sports, team, interests, imgUrl} = data;
 
   const handleSubmit = async()=>{
     try{
@@ -29,22 +31,45 @@ const FormCompleted = () => {
   }
   return (
     <div>
-        <p>name: {name}</p>
-        <p>age: {age}</p>
-        <p>gender: {gender}</p>
-        <p>location: {location}</p>
-        <p>height: {height}</p>
-        <p>weight: {weight}</p>
-        <p>team: {team}</p>
-        <p>sports:</p>
-        {sports.map((sport) => (
-          <span key={sport}>{sport + " "}</span>
-        ))}
-
-        <p>interests:</p>
-        {interests.map((interest) => (
-          <span key={interest}>{interest + " "}</span>
-        ))}
+        <div className={styles.profileContainer}>
+        <div className={styles.profileName}>{name}</div> 
+        <div className={styles.bodyContainer}>        
+            <div>
+            <div className={styles.profileInfo}>From: {location}</div>
+            <div className={styles.profileInfo}>Gender: {gender}</div>
+            <div className={styles.profileInfo}>Age: {age}</div>
+            <div className={styles.profileInfo}>Height: {height}</div>
+            <div className={styles.profileInfo}>Weight: {weight}</div>
+            <div className={styles.profileInfo}>
+            Sports:{" "}
+            {sports.map((sport, index) => {
+                return (
+                <span key={sport}>
+                    {index === sports.length - 1 ? sport : sport + ",  "}
+                </span>
+                );
+            })}
+            </div>
+            <div className={styles.profileInfo}>Team: {team}</div>
+            <div className={styles.profileInfo}>
+            Interest:{" "}
+            {interests.map((interest, index) => {
+                return (
+                <span key={interest}>
+                    {index === interests.length - 1
+                    ? interest
+                    : interest + ", "}
+                </span>
+                );
+            })}
+            </div>
+            
+            </div>
+            <div className={styles.imgContainer}>
+                <Image alt="profile image" width="200" height="200" src={imgUrl}/>
+            </div>
+        </div>
+      </div>
 
         <button onClick={handleSubmit}>Submit</button>
 
