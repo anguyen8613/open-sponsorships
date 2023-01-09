@@ -20,10 +20,10 @@ const schema = yup.object().shape({
 
 const AdditionalInfo = ({ formStep, nextFormStep }) => {
   const { setFormValues } = useFormData();
+
   const formRef = useRef();
 
   async function handleSubmit(data) {
-    
     try {
       formRef.current.setErrors({});
 

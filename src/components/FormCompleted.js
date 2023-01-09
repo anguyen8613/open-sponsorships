@@ -5,9 +5,9 @@ import styles from './FormCompleted.module.scss';
 
 const FormCompleted = () => {
   const { data } = useFormData();
+  const {clearFormValues} = useFormData();
   const router = useRouter();
 
-  console.log("data",data)
   const {name, age, gender, location, height, weight, sports, team, interests, imgUrl} = data;
 
   const handleSubmit = async()=>{
@@ -23,7 +23,7 @@ const FormCompleted = () => {
       });
       const profile=  await response.json();
       const id = profile.data.id;
-      console.log("profile", profile);
+      clearFormValues();
       router.push(`/profiles/${id}`)
     }catch(e){
 
@@ -42,7 +42,7 @@ const FormCompleted = () => {
             <div className={styles.profileInfo}>Weight: {weight}</div>
             <div className={styles.profileInfo}>
             Sports:{" "}
-            {sports.map((sport, index) => {
+            {sports?.map((sport, index) => {
                 return (
                 <span key={sport}>
                     {index === sports.length - 1 ? sport : sport + ",  "}
@@ -53,7 +53,7 @@ const FormCompleted = () => {
             <div className={styles.profileInfo}>Team: {team}</div>
             <div className={styles.profileInfo}>
             Interest:{" "}
-            {interests.map((interest, index) => {
+            {interests?.map((interest, index) => {
                 return (
                 <span key={interest}>
                     {index === interests.length - 1

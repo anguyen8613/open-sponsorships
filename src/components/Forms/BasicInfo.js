@@ -27,7 +27,6 @@ export const BasicInfo = ({ formStep, nextFormStep }) => {
   const formRef = useRef();
 
   const handleSubmit = async(data) => {
-    console.log(data)
     try {
       formRef.current.setErrors({});
 

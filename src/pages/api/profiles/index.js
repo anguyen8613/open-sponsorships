@@ -12,7 +12,6 @@ export const getProfiles = async() =>{
 export const createProfile = async(body) => {
   await dbConnect();
     const id= uuid();
-    console.log(id);
     const profile = await Profile.create({...body, id: id.toString()});
     return profile;
 }

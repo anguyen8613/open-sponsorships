@@ -12,8 +12,12 @@ const FormProvider = ({ children }) => {
     }));
   };
 
+  const clearFormValues = ()=> {
+    setData({})
+  }
+
   return (
-    <FormContext.Provider value={{ data, setFormValues }}>
+    <FormContext.Provider value={{ data, setFormValues, clearFormValues }}>
       {children}
     </FormContext.Provider>
   );

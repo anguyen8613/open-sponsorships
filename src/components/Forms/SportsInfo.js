@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../../../styles/styles.module.scss";
 import { Form } from "@unform/web";
 import { MultiSelect } from "react-multi-select-component";
@@ -14,6 +14,26 @@ const schema = yup.object().shape({
 
 const SportsInfo = ({ formStep, nextFormStep }) => {
   const { setFormValues } = useFormData();
+  const {data} = useFormData();
+
+  useEffect(() => {
+    const {sports, interests} = data;
+    if(sports?.length > 0){
+      const previousSports = sports.map((sport) => {
+        return {label: sport, value: sport}
+      })
+
+      setSelectedSports(previousSports);
+    }
+
+    if(interests?.length > 0){
+      const previousInterests = interests.map((interest) => {
+        return {label: interest, value: interest}
+      })
+
+      setSelectedInterests(previousInterests);
+    }
+  }, [])
 
   const[selectedSports, setSelectedSports] = useState([]);
   const[selectedInterests, setSelectedInterests] = useState([]);
