@@ -3,9 +3,9 @@ import dbConnect from '../../../lib/dbConnect';
 import Profile from '../../../lib/models/Profile';
 
 export const getProfiles = async() =>{
-        await dbConnect();
-        const profiles =  await Profile.find({}).lean()
-        return profiles;
+    await dbConnect();
+    const profiles =  await Profile.find({}).lean()
+    return profiles;
 }
 
 
